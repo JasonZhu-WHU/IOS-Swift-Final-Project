@@ -74,6 +74,7 @@ class AddUserAndSetScoreViewController: FormViewController {
         self.presentingViewController!.dismiss(animated: true, completion: nil)
     }
     
+    //添加新用户/老师
     @IBAction func addUser_clicked(_ sender: Any) {
         // 获取表格中所有rows的值(必须给每个row的tag赋值)
         // 字典中包含的键值对为：['rowTag': value]。

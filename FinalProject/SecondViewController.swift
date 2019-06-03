@@ -99,7 +99,7 @@ class SecondViewController: FormViewController {
                     row.value = (studentToQuery).value(forKey: "oc") as? String
             }
             
-            form +++ Section("了解全班各科的最高分")
+            form +++ Section("了解全班各科的平均分")
                 <<< SwitchRow("high"){
                     $0.title = "显示"
                 }

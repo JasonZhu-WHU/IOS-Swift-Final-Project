@@ -44,6 +44,7 @@ class ThirdViewController: FormViewController {
         // Do any additional setup after loading the view.
     }
     
+    //点击登陆
     @IBAction func login_clicked(_ sender: Any) {
         let valuesDictionary = form.values()
         let username :String = valuesDictionary["name"] as! String
@@ -55,27 +56,20 @@ class ThirdViewController: FormViewController {
         let users = try! context.fetch(fetchRequest) as! [User]
         print(username)
         print(password)
-        do
-        {
-            if(users.count == 0){
-                showMsgbox(_message: "登录失败，用户名不正确，请重新输入！")
-                return
+        if(users.count == 0){
+            showMsgbox(_message: "登录失败，用户名不正确，请重新输入！")
+            return
+        }
+        else{
+            if(users[0].password == password){
+                display(username: username)
+                FirstViewController.display()
+                SecondViewController.display()
+                showMsgbox(_message: "登录成功，\(username)，欢迎您！")
             }
             else{
-                if(users[0].password == password){
-                    display(username: username)
-                    FirstViewController.display()
-                    SecondViewController.display()
-                    showMsgbox(_message: "登录成功，\(username)，欢迎您！")
-                }
-                else{
-                    showMsgbox(_message: "登录失败，密码不正确，请重新输入！")
-                }
+                showMsgbox(_message: "登录失败，密码不正确，请重新输入！")
             }
-        }
-        catch
-        {
-            print(error)
         }
     }
     
